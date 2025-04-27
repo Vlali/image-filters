@@ -18,7 +18,30 @@ public class GrayScaleFilter implements Filter {
 	public Image runFilter(BufferedImage image, Map<String, Parameter> parameters) {
 		BufferedImage bi = new BufferedImage(image.getWidth(), image.getHeight(), image.getType());
 
+		for(int x = 0; x < image.getWidth(); x++) {
+			for(int y = 0; y < image.getHeight(); y++) {
+				Pixel pixel = new Pixel(image.getRGB(x, y));
+
+				int r= pixel.getR();
+				int g= pixel.getG();
+				int b= pixel.getB();
+				int gray = (r + g + b) / 3;
+
+				pixel.setR(gray);
+				pixel.setG(gray);
+				pixel.setB(gray);
+
+				int newRaw= Pixel.generateRaw(gray,gray,gray,pixel.getAlpha());
+				pixel.setRaw(newRaw);
+
+
+				bi.setRGB(x, y, pixel.getRaw());
+
+			}
+		}
+
 		/* @TODO Place your implementation here */
+
 
 		return bi;
 	}

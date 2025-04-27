@@ -119,6 +119,12 @@ public class Pixel {
 	 */
 	private void updateYCbCrFromRGB() {
 		/* @TODO Place your implementation here */
+
+		y = (int)(16 + (65.738 * r + 129.057 * g + 25.064 * b) / 256);
+		cb = (int)(128 + (-37.945 * r - 74.494 * g + 112.439 * b) / 256);
+		cr = (int)(128 + (112.439 * r - 94.154 * g - 18.285 * b) / 256);
+
+
 	}
 
 	/**

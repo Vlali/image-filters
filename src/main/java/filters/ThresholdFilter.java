@@ -24,6 +24,21 @@ public class ThresholdFilter implements Filter {
 
 		/* @TODO Place your implementation here */
 
+		for(int x = 0; x < image.getWidth(); x++) {
+			for(int y = 0; y < image.getHeight(); y++) {
+				Pixel pixel = new Pixel(image.getRGB(x, y));
+
+				int gray = (pixel.getR() + pixel.getG() + pixel.getB()) / 3;
+
+				if(threshold > gray) {
+					bi.setRGB(x, y, whitePixel);
+				}else{
+					bi.setRGB(x, y, blackPixel);
+				}
+
+			}
+		}
+
 		return bi;
 	}
 

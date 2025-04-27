@@ -22,16 +22,12 @@ public class GrayScaleFilter implements Filter {
 			for(int y = 0; y < image.getHeight(); y++) {
 				Pixel pixel = new Pixel(image.getRGB(x, y));
 
-				int r= pixel.getR();
-				int g= pixel.getG();
-				int b= pixel.getB();
-				int gray = (r + g + b) / 3;
+
+				int gray = (pixel.getR() + pixel.getG() + pixel.getB()) / 3;
 
 				int newRaw= Pixel.generateRaw(gray,gray,gray,pixel.getAlpha());
-				pixel.setRaw(newRaw);
 
-
-				bi.setRGB(x, y, pixel.getRaw());
+				bi.setRGB(x, y, newRaw);
 
 			}
 		}

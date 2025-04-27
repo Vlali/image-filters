@@ -1,5 +1,7 @@
 package filters;
 
+import pixels.Pixel;
+
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.util.Arrays;
@@ -19,6 +21,25 @@ public class Subsampling implements Filter {
 		BufferedImage bi = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_ARGB);
 	
 		/* @TODO Place your implementation here */
+		for(int x = 0; x < image.getWidth(); x+=rate) {
+			for(int y = 0; y < image.getHeight(); y+=rate) {
+
+				Pixel pixel = new Pixel(image.getRGB(x, y));
+				pixel.getCb();
+				pixel.getCr();
+
+
+
+
+
+				int newRaw= Pixel.generateRaw(gray,gray,gray,pixel.getAlpha());
+
+				bi.setRGB(x, y, newRaw);
+
+			}
+		}
+
+
 		
 		return bi;
 	}

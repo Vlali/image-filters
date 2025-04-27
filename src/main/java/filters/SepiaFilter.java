@@ -28,13 +28,13 @@ public class SepiaFilter implements Filter {
 				int green = pixel.getG();
 				int blue = pixel.getB();
 
-				double changedTOSepiaRed = (red * 0.393) + (green * 0.769) + (blue * 0.189);
-				double changedToSepiaGreen =(red * 0.349) + (green * 0.686) + (blue * 0.168);
-				double changedToSepiaBlue = (red * 0.272) + (green * 0.534) + (blue * 0.131);
+				int changedTOSepiaRed = (int) ((red * 0.393) + (green * 0.769) + (blue * 0.189));
+				int changedToSepiaGreen = (int) ((red * 0.349) + (green * 0.686) + (blue * 0.168));
+				int changedToSepiaBlue = (int) ((red * 0.272) + (green * 0.534) + (blue * 0.131));
 
-				int clampedSepiaRed = rgbBoundaries((int)changedTOSepiaRed);
-				int clampedSepiaGreen = rgbBoundaries((int)changedToSepiaGreen);
-				int clampedSepiaBlue = rgbBoundaries((int)changedToSepiaBlue);
+				int clampedSepiaRed = rgbBoundaries(changedTOSepiaRed);
+				int clampedSepiaGreen = rgbBoundaries(changedToSepiaGreen);
+				int clampedSepiaBlue = rgbBoundaries(changedToSepiaBlue);
 
 
 				int newRaw= Pixel.generateRaw(clampedSepiaRed,clampedSepiaGreen,clampedSepiaBlue,pixel.getAlpha());

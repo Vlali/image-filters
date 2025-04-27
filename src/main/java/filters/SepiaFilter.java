@@ -28,8 +28,8 @@ public class SepiaFilter implements Filter {
 				int green = pixel.getG();
 				int blue = pixel.getB();
 
-				double changedRed = (red * 0.393) + (green * 0.769) + (blue * 0.189);
-				double changedGreen = (red * 0.349) + (green * 0.686) + (blue * 0.168);
+				double changedRed = Math.min(255,(red * 0.393)) + Math.min(255,(green * 0.769)) + Math.min(255,(blue * 0.189));
+				double changedGreen = Math.min(255,(red * 0.349)) + Math.min(255,(green * 0.686)) + Math.min(255,(blue * 0.168);
 				double changedBlue = (red * 0.272) + (green * 0.534) + (blue * 0.131);
 
 				int newRaw= Pixel.generateRaw((int)changedRed,(int)changedGreen,(int)changedBlue,pixel.getAlpha());
@@ -40,6 +40,16 @@ public class SepiaFilter implements Filter {
 		}
     
 	return bi;
+
+	}
+
+	private int rgbBoundaries(int value) {
+		if (value < 0) {
+			value = 0;
+		} else if (value > 255) {
+			value = 255;
+		}
+		return value;
 
 	}
 

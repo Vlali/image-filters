@@ -42,17 +42,9 @@ public class Subsampling implements Filter {
 						if(pixelBlockCoordinateX< image.getWidth() && pixelBlockCoordinateY < image.getHeight()) {
 							Pixel currentPixel = new Pixel(image.getRGB(pixelBlockCoordinateX, pixelBlockCoordinateY));
 
-
 							Pixel newPixel= new Pixel(currentPixel.getY(),pixelWithinTheBlocksCb, pixelWithinTheBlocksCr);
 
-							int modifiedRed=newPixel.getR();
-							int modifiedGreen=newPixel.getG();
-							int modifiedBlue=newPixel.getB();
-
-							int newRaw= Pixel.generateRaw(modifiedRed, modifiedGreen, modifiedBlue, currentPixel.getAlpha());
-
-
-							bi.setRGB(pixelBlockCoordinateX, pixelBlockCoordinateY, newRaw);
+							bi.setRGB(pixelBlockCoordinateX, pixelBlockCoordinateY, newPixel.getRaw());
 
 						}
 					}

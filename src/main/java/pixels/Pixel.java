@@ -142,6 +142,9 @@ public class Pixel {
 
 		// we assume full alpha
 		alpha = 255;
+
+		raw = Pixel.generateRaw(r, g, b, alpha);
+
 	}
 
 	// GETTERS / SETTERS

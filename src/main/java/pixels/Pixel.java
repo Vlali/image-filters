@@ -124,9 +124,6 @@ public class Pixel {
 		cb = (int)(128 + (-37.945 * r - 74.494 * g + 112.439 * b) / 256);
 		cr = (int)(128 + (112.439 * r - 94.154 * g - 18.285 * b) / 256);
 
-		y=valueBoundaries(y);
-		cb=valueBoundaries(cb);
-		cr=valueBoundaries(cr);
 
 	}
 
@@ -141,9 +138,7 @@ public class Pixel {
 		g = (int)((298.082 * y - 100.291 * cb - 208.120 * cr) / 256 + 135.576);
 		b = (int)((298.082 * y + 516.412 * cb) / 256 - 276.836);
 
-		r=valueBoundaries(r);
-		g=valueBoundaries(g);
-		b=valueBoundaries(b);
+
 		// we assume full alpha
 		alpha = 255;
 	}
@@ -232,15 +227,7 @@ public class Pixel {
 
 		return buffer.toString();
 	}
-	private int valueBoundaries(int value) {
-		if (value < 0) {
-			value = 0;
-		} else if (value > 255) {
-			value = 255;
-		}
-		return value;
 
-	}
 
 
 }

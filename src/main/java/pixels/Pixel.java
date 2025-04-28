@@ -120,9 +120,10 @@ public class Pixel {
 	private void updateYCbCrFromRGB() {
 		/* @TODO Place your implementation here */
 
-		y = (int)(16 + (65.738 * r + 129.057 * g + 25.064 * b) / 256);
-		cb = (int)(128 - (37.945 * r + 74.494 * g - 112.439 * b) / 256);
-		cr = (int)(128 + (112.439 * r - 94.154 * g - 18.285 * b) / 256);
+		y = (int)(0.299 * r + 0.587 * g + 0.114 * b);
+		cb = (int)(-0.168736 * r - 0.331264 * g + 0.5 * b + 128);
+		cr = (int)(0.5 * r - 0.418688 * g - 0.081312 * b + 128);
+
 
 
 	}
@@ -134,9 +135,9 @@ public class Pixel {
 	 */
 	private void updateRGBFromYCbCr() {
 		/* @TODO Place your implementation here */
-		r = (int)((298.082 * y + 408.583 * cr) / 256 - 222.921);
-		g = (int)((298.082 * y - 100.291 * cb - 208.120 * cr) / 256 + 135.576);
-		b = (int)((298.082 * y + 516.412 * cb) / 256 - 276.836);
+		r = (int) (y + 1.402 * (cr - 128));
+		g = (int) (y - 0.344136 * (cb - 128) - 0.714136 * (cr - 128));
+		b = (int) (y + 1.772 * (cb - 128));
 
 
 		// we assume full alpha

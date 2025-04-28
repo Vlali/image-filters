@@ -28,9 +28,12 @@ public class Subsampling implements Filter {
 
 				Pixel pixelWithinTheBlock = new Pixel(image.getRGB(x, y));
 
-				int pixelWithinTheBlocksCb=pixelWithinTheBlock.getCb();
-				int pixelWithinTheBlocksCr =pixelWithinTheBlock.getCr();
+				int redColorInTheBlock=pixelWithinTheBlock.getR();
+				int greenColorInTheBlock=pixelWithinTheBlock.getG();
+				int blueColorInTheBlock=pixelWithinTheBlock.getB();
+				int alphaColorInTheBlock=pixelWithinTheBlock.getAlpha();
 
+				Pixel newPixel= new Pixel(redColorInTheBlock, greenColorInTheBlock, blueColorInTheBlock,alphaColorInTheBlock);
 
 				// inside every single block
 				for(int x1 = 0; x1 < rate; x1++) {
@@ -40,16 +43,12 @@ public class Subsampling implements Filter {
 						int pixelBlockCoordinateY=y+y1;
 
 						if(pixelBlockCoordinateX< image.getWidth() && pixelBlockCoordinateY < image.getHeight()) {
-							Pixel currentPixel = new Pixel(image.getRGB(pixelBlockCoordinateX, pixelBlockCoordinateY));
-
-							Pixel newPixel= new Pixel(currentPixel.getY(),pixelWithinTheBlocksCb, pixelWithinTheBlocksCr);
 
 							bi.setRGB(pixelBlockCoordinateX, pixelBlockCoordinateY, newPixel.getRaw());
 
 						}
 					}
 				}
-
 			}
 		}
 

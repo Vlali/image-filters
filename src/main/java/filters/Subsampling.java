@@ -58,7 +58,7 @@ public class Subsampling implements Filter {
 
 	@Override
 	public List<Parameter> getParameters() {
-		Parameter p = new Parameter("rate", 4, 1, 8);
+		Parameter p = new Parameter("rate", 4, 1, 24);
 		return Arrays.asList(p);
 	}
 

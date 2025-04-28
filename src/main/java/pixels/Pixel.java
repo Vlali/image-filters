@@ -124,8 +124,6 @@ public class Pixel {
 		cb = (int)(-0.168736 * r - 0.331264 * g + 0.5 * b + 128);
 		cr = (int)(0.5 * r - 0.418688 * g - 0.081312 * b + 128);
 
-
-
 	}
 
 	/**
@@ -138,6 +136,10 @@ public class Pixel {
 		r = (int) (y + 1.402 * (cr - 128));
 		g = (int) (y - 0.344136 * (cb - 128) - 0.714136 * (cr - 128));
 		b = (int) (y + 1.772 * (cb - 128));
+
+		r = rgbBoundaries(r);
+		g = rgbBoundaries(g);
+		b = rgbBoundaries(b);
 
 
 		// we assume full alpha
@@ -231,7 +233,9 @@ public class Pixel {
 
 		return buffer.toString();
 	}
-
+	private int rgbBoundaries(int value) {
+		return Math.max(0, Math.min(255, value));
+	}
 
 
 }

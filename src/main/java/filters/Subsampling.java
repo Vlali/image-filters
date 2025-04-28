@@ -49,7 +49,7 @@ public class Subsampling implements Filter {
 							int modifiedGreen=newPixel.getG();
 							int modifiedBlue=newPixel.getB();
 
-							int newRaw=Pixel.generateRaw(modifiedRed, modifiedGreen, modifiedBlue, currentPixel.getAlpha());
+							int newRaw= Pixel.generateRaw(modifiedRed, modifiedGreen, modifiedBlue, currentPixel.getAlpha());
 
 
 							bi.setRGB(pixelBlockCoordinateX, pixelBlockCoordinateY, newRaw);

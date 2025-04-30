@@ -32,12 +32,12 @@ public class SepiaFilter implements Filter {
 				int changedToSepiaGreen = (int) ((red * 0.349) + (green * 0.686) + (blue * 0.168));
 				int changedToSepiaBlue = (int) ((red * 0.272) + (green * 0.534) + (blue * 0.131));
 
-				int clampedSepiaRed = rgbBoundaries(changedTOSepiaRed);
-				int clampedSepiaGreen = rgbBoundaries(changedToSepiaGreen);
-				int clampedSepiaBlue = rgbBoundaries(changedToSepiaBlue);
+				int withinBoundariesSepiaRed = rgbBoundaries(changedTOSepiaRed);
+				int withinBoundariesSepiaGreen = rgbBoundaries(changedToSepiaGreen);
+				int withinBoundariesSepiaBlue = rgbBoundaries(changedToSepiaBlue);
 
 
-				int newRaw= Pixel.generateRaw(clampedSepiaRed,clampedSepiaGreen,clampedSepiaBlue,pixel.getAlpha());
+				int newRaw= Pixel.generateRaw(withinBoundariesSepiaRed,withinBoundariesSepiaGreen,withinBoundariesSepiaBlue,pixel.getAlpha());
 
 				bi.setRGB(x, y, newRaw);
 

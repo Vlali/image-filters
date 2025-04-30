@@ -127,7 +127,7 @@ public class Pixel {
 	}
 
 	/**
-	 * Genrate RGB from YCbCr values
+	 * Generate RGB from YCbCr values
 	 * 
 	 * @see http://en.wikipedia.org/wiki/YCbCr and lecture slides
 	 */
